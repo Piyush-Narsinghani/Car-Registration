@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Welcome to my project
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="bundle.js"></script>
+        <style>
+            #instructor {
+                    padding:1em;
+                    background-color:#fff;
+                    margin: 1em 0;
+                    }
+        </style>
+
+    </head>
+    <body>
+    <header id="main-header">
+        <div class=container>
+           <h1>CarContract Administration and registration system</h1>
+        </div>
+    </header>
+    <nav id="navbar">
+      <div class="container">
+        <ul>
+            <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+            <li class="dropdown">
+                    <a href="#"><i class="fa fa-university"></i> CarContract Administration</a>
+                    <div class="main-dropdown">
+                        <p><a href="Validity.html"><i class="fa fa-check-square"></i> Check validity of land</a></p>
+                    </div>
+                </li>
+            <li><a href="blockchain.html"><i class="fa fa-btc" aria-hidden="true"></i> BlockChain</a></li>
+            <li><a href="index.html"><i class="fa fa-sign-out" aria-hidden="true"></i> LogOut</a></li>
+        </ul>
+      </div>
+	</nav>
+    
+    <section id="main-section">
+        <div class="main-form">
+            <form name="sendtoblockchain" >
+                <div class="form-group">
+                    <label for="input-propertyid">CarID</label>
+                    <input type="text" id="propertyid" placeholder="Enter details here" required> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">Owner Name</label>
+                    <input type="text" id="ownername" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">State</label>
+                    <input type="text" id="state" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">District</label>
+                    <input type="text" id="district" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">Village</label>
+                    <input type="text" id="village" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">Pincode</label>
+                    <input type="text" id="pincode" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="input-propertyid">UID</label>
+                    <input type="text" id="uid" required placeholder="Enter details here"> 
+                </div>
+                <br>
+                <!-- <div class="form-group">
+                     <label for="Digital_sign">Digital Signiture</label>
+                     <input type="text" id="digital_sign" required placeholder="Enter your Digital Signiture"> 
+                </div>
+                <br> -->
+                <input type="button"  id="submit" value="submit">
+            </form>
+        </div>
+    </section>
+    <footer id="main-footer">
+        <p>Copyright &copy; 2021</p>
+    </footer>
+
+    <script>
+        if (typeof web3 !== 'undefined') {
+    web3 = new Web3(web3.currentProvider);
+} else {
+    // set the provider you want from Web3.providers
+    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+}
+
+web3.eth.defaultAccount = web3.eth.accounts[0];
+
+var CarContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			},
+			{
+				"name": "_Signmsg",
+				"type": "string"
+			}
+		],
+		"name": "SetLandDetails",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			},
+			{
+				"name": "_Signmsg",
+				"type": "string"
+			}
+		],
+		"name": "SetLandDetails1",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			},
+			{
+				"name": "_Signmsg",
+				"type": "string"
+			}
+		],
+		"name": "SetLandDetails2",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			}
+		],
+		"name": "GetUserInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			}
+		],
+		"name": "GetUserInfo1",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_PID",
+				"type": "string"
+			}
+		],
+		"name": "GetUserInfo2",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+
+
+
+
+
+var CarContract = CarContract.at('0x954DcFa1bFc6cAaf731F97B46E65357E3432ac6D');
+
+document.getElementById('submit').onclick = function()
+{
+    alert("Your Car Details are Recorded!");
+var pid=document.getElementById("propertyid").value;
+var ownername=document.getElementById("ownername").value;
+var state=document.getElementById("state").value;
+var village=document.getElementById("village").value;
+var district=document.getElementById("district").value;
+var uid=document.getElementById("uid").value;
+var pincode=document.getElementById("pincode").value;
+
+var msgds=getDigitalSign(pid,ownername,state,district,village,pincode,uid);
+
+console.log(msgds);
+
+var t0 = performance.now();
+
+CarContract.SetLandDetails(pid, msgds[0]);
+CarContract.SetLandDetails1(pid, msgds[1]);
+CarContract.SetLandDetails2(pid, msgds[2]);
+var t1 = performance.now();
+
+console.log("keep ds func took " + (t1 - t0) + " milliseconds.");
+
+// console.log(pid);
+
+// var result=CarContract.GetUserInfo.call(pid);
+// var result1=CarContract.GetUserInfo1.call(pid);
+// var result2=CarContract.GetUserInfo2.call(pid);
+// var ds=result.concat(result1,result2);
+
+alert("Your CarContract asset information securely stored into blockchain");
+
+
+}
+
+    </script>
+
+  </body>
+</html>
